@@ -28,6 +28,7 @@ namespace WebApplication2
 
             if (registro.Read())
             {
+                Response.Redirect("Catalogo.aspx");
 
             }
             else if (txtUsuario.Text.Equals("admin") && txtPassword.Text.Equals("admin"))
@@ -40,6 +41,12 @@ namespace WebApplication2
                 
 
             conexion.Close();
+        }
+
+        protected void linkOlvideContraseña_Click(object sender, EventArgs e)
+        {
+            Response.Write($"<script>alert('Por favor contactese con soporte tecnico para recuperar su contraseña.')</script>");
+
         }
     }
     }

@@ -130,8 +130,15 @@
                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
+            <asp:Button ID="btnFinalizar" runat="server" Text="Finalizar pedido" BackColor="#3399FF" Font-Bold="True" Font-Size="20px" ForeColor="#000000" OnClick="btnFinalizar_Click" Width="175px"/>
         </asp:Panel>
-        <asp:Label ID="LabelPrueba" runat="server"></asp:Label>
+                                                
+
+        <asp:Panel ID="Panel1" runat="server" Direction="RightToLeft">
+            <asp:Button ID="ButtonMenu" runat="server" Text="Menu" OnClick="ButtonMenu_Click" BackColor="#3399FF" Font-Bold="True" Font-Size="20px" ForeColor="#000000" Width="175px" />
+        </asp:Panel>
+                                                
+
     </form>
 </body>
 </html>

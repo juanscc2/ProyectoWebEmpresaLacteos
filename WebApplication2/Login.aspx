@@ -22,16 +22,17 @@
         .auto-style1 {
             height: 33px;
         }
+        
     </style>
 </head>
 <body style="font-family: Calibri;">
-    <table align="center" style="width: 40%;">
+    <table align="center" style="width: 40%;" >
         <tr>
             <td align="center">
-                <form id="hfrmLogin" runat="server">
-                <fieldset>
+                <form id="hfrmLogin" runat="server" >
+                <fieldset style="background-color:antiquewhite">
                     <legend>Empresa Lacteos AntiPlanos S.A.S</legend>
-                    <table align="left" style="width: 100%">
+                    <table align="left" style="width: 100%" >
                         <tr>
                             <td align="left" rowspan="4">
                                 <img alt="" class="style6" src="Imagenes/Recurso%203@4x.png" />
@@ -60,9 +61,15 @@
                                 &nbsp;
                             </td>
                             <td align="left">
-                                    <asp:Button ID="btnIngresar" runat="server" Text="Login" Font-Bold="True" OnClick="btnIngresar_Click" />
+                                    <asp:Button ID="btnIngresar" runat="server" Text="Iniciar Sesion" Font-Bold="True" OnClick="btnIngresar_Click" />
+                                                                
+                                
+
                                 <br />
+                                                                <asp:LinkButton ID="linkOlvideContraseña" runat="server" Text="Olvide mi contraseña" OnClick="linkOlvideContraseña_Click"></asp:LinkButton>
+
                             </td>
+                            
                         </tr>
                         <tr>
                             <td align="center" colspan="2">

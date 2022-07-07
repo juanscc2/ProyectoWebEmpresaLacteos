@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -50,7 +52,7 @@ namespace WebApplication2
                 int.TryParse(gvProductos.DataKeys[index]["ProductoID"].ToString(), out int idProducto);
 
                 //Valida si ya lo agrego al listado de carrito de compra
-                if (ListaCarritoCompra.Any(x => x.ProductoID == Convert.ToInt32(lblIdProducto.Text)))
+                if (ListaCarritoCompra.Any(x => x.ProductoID == idProducto))
                 {
                     Response.Write($"<script>alert('Usted ya adiciono el producto {lblNombreProducto.Text} al carrito')</script>");
                     return;
@@ -119,5 +121,52 @@ namespace WebApplication2
 
 
         }
+
+        private byte[] GenerarArchivoPlano()
+        {
+
+            byte[] archivo = null;
+            using (var ms = new MemoryStream())
+            {
+                using (TextWriter tw = new StreamWriter(ms))
+
+                {
+                    tw.WriteLine("Producto|Precio|CantidadOrdenada");
+                    foreach (var producto in ListaCarritoCompra)
+                    {
+                        tw.WriteLine($"{producto.NombreProducto}|{producto.PrecioProducto}|{producto.CantidadSeleccionada}");
+                    }
+                    tw.Flush();
+                    ms.Position = 0;
+                    archivo = ms.ToArray();
+                }
+
+            }
+
+            return archivo;
+
+        }
+
+        protected void btnFinalizar_Click(object sender, EventArgs e)
+        {
+
+
+            string fileName = "Comprobante.txt";            
+            Response.Clear();
+            MemoryStream ms = new MemoryStream(GenerarArchivoPlano());
+            Response.ContentType = "application/txt";
+            Response.Headers.Add("content-disposition", "attachment;filename=" + fileName);
+            Response.Buffer = true;
+            ms.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+
+        protected void ButtonMenu_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+
+        }
     }
+
 }

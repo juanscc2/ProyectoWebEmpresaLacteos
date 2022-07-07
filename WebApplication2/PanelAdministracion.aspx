@@ -23,7 +23,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:TextBox ID="txtCantidad" runat="server">Cantidad</asp:TextBox>
+                                    
                                     <asp:GridView ID="gvUsuarios" runat="server" CellPadding="4" Font-Names="Calibri" Font-Size="12pt" ForeColor="#333333" OnRowCommand="gvUsuarios_RowCommand" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
